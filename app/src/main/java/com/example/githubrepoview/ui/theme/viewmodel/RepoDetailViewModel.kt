@@ -31,6 +31,7 @@ class RepoDetailViewModel @Inject constructor(
         getRepoDetailUseCase(owner, repo).onEach { result ->
             when (result) {
                 is DataResult.Success -> {
+                    Log.d("testtt", "loadRepoDetailFromApi:1 ${result.data}")
                     _repoDetailState.value = RepoDetailState(repoList = result.data?.let {
                         mapRepoDetailToUiRepoDetail(
                             it
@@ -39,11 +40,12 @@ class RepoDetailViewModel @Inject constructor(
                 }
 
                 is DataResult.Loading -> {
+                    Log.d("testtt", "loadRepoDetailFromAp:2")
                     _repoDetailState.value = RepoDetailState(isLoading = true)
                 }
 
                 is DataResult.Error -> {
-                    Log.d("ASdasdas", "loadRepoDetailFromApi: ")
+                    Log.d("testtt", "loadRepoDetailFromAp:3 ${result.message}")
                     _repoDetailState.value =
                         RepoDetailState(error = result.message ?: "unexpected error")
                     loadRepoDetailFromDataBase(nodeId)

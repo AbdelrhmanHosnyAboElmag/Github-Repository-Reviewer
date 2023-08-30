@@ -51,7 +51,7 @@ object ApiModule {
             .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
-            .client(client)
+            //.client(client)
             .build().create(RepositoriesApi::class.java)
     }
 

@@ -1,5 +1,6 @@
 package com.example.githubrepoview.ui.theme.screen
 
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -40,6 +41,7 @@ fun RepoDetailScreen(
     viewModel: RepoDetailViewModel = hiltViewModel()
 ) {
     LaunchedEffect(viewModel) {
+        Log.d("testtt", "RepoDetailScreen: ${owner}  ${repo}")
         viewModel.loadRepoDetailFromApi(owner, repo, nodeId)
     }
     val repoDetailState = viewModel.repoDetailState.value
@@ -106,10 +108,12 @@ private fun ContentView(
                     modifier = Modifier
                         .padding(top = 16.dp)
                 )
-                Text(
-                    text = repoList.description,
-                    style = infoTextStyle()
-                )
+                repoList.description?.let {
+                    Text(
+                        text = it,
+                        style = infoTextStyle()
+                    )
+                }
 
             }
 

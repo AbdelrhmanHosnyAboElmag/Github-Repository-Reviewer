@@ -8,7 +8,6 @@ import com.example.githubrepoview.data.local.entity.RepoDetailsDatabase
 import com.example.githubrepoview.data.local.entity.RepositoriesDatabase
 import com.example.githubrepoview.domain.model.Item
 import com.example.githubrepoview.domain.model.RepoIssueItem
-import com.example.githubrepoview.domain.model.SearchRepo
 import com.example.githubrepoview.ui.theme.models.UiOwner
 import com.example.githubrepoview.ui.theme.models.UiRepoDetail
 import com.example.githubrepoview.ui.theme.models.UiRepoIssueItem
