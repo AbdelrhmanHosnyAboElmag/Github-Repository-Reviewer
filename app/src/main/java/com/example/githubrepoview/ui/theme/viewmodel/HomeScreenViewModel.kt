@@ -41,6 +41,7 @@ class HomeScreenViewModel @Inject constructor(
         getRepositoriesUseCase().onEach { result ->
             when (result) {
                 is DataResult.Success -> {
+                    Log.d("tetstsa", "loadRepositoriesFromApi:1${result.data} ")
                     _repoState.value = RepoListState(repoList = result.data?.let {
                         mapRepositoriesItemToUiRepositories(
                             it
@@ -49,10 +50,12 @@ class HomeScreenViewModel @Inject constructor(
                 }
 
                 is DataResult.Loading -> {
+                    Log.d("tetstsa", "loadRepositoriesFromApi:2 ")
                     _repoState.value = RepoListState(isLoading = true)
                 }
 
                 is DataResult.Error -> {
+                    Log.d("tetstsa", "loadRepositoriesFromApi:3${result.message}")
                     _repoState.value = RepoListState(error = result.message ?: "unexpected error")
                     loadRepositoriesFromDataBase()
                 }

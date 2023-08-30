@@ -58,7 +58,6 @@ fun DisplayRepoList(
                     modifier = Modifier.size(48.dp)
                 )
             }
-
             !repoState.error.isNullOrEmpty() -> {
                 Toast.makeText(LocalContext.current, repoState.error + "", Toast.LENGTH_SHORT)
                     .show()
